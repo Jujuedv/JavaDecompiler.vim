@@ -21,27 +21,8 @@ augroup class
   autocmd BufReadPost,FileReadPost	*.class  call s:read("procyon-decompiler -ln")
 augroup END
 
-" Function to check that executing "cmd [-f]" works.
-" The result is cached in s:have_"cmd" for speed.
-fun s:check(cmd)
-  let name = substitute(a:cmd, '\(\S\-*\).*', '\1', '')
-  if !exists("s:have_" . name)
-    let e = executable(name)
-    if e < 0
-      let r = system(name . " --version")
-      let e = (r !~ "not found" && r != "")
-    endif
-    exe "let s:have_" . name . "=" . e
-  endif
-  exe "return s:have_" . name
-endfun
-
 " After reading decompiled file: Decompiled text in buffer with "cmd"
 fun s:read(cmd)
-  " don't do anything if the cmd is not supported
-  if !s:check(a:cmd)
-    return
-  endif
   " make 'patchmode' empty, we don't want a copy of the written file
   let pm_save = &pm
   set pm      =
