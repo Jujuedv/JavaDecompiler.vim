@@ -36,7 +36,7 @@ fun s:read(cmd)
   set nobin
   "Split and show code in a new window
   g/.*/d
-  execute "silent r !" a:cmd . orig
+  execute "silent r !" a:cmd . " " . orig
   1
   " set file name, type and file syntax to java
   execute ":file " . procyonfile
