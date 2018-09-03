@@ -18,7 +18,7 @@ augroup class
   " set binary mode before reading the file
   " add your preferable flags after "procyon" (for instance "procyon -f -dead -ff -a")
   autocmd BufReadPre,FileReadPre	*.class  set bin
-  autocmd BufReadPost,FileReadPost	*.class  call s:read("procyon -ln")
+  autocmd BufReadPost,FileReadPost	*.class  call s:read("procyon-decompiler -ln")
 augroup END
 
 " Function to check that executing "cmd [-f]" works.
