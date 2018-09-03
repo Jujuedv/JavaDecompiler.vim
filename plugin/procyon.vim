@@ -24,7 +24,7 @@ augroup END
 " Function to check that executing "cmd [-f]" works.
 " The result is cached in s:have_"cmd" for speed.
 fun s:check(cmd)
-  let name = substitute(a:cmd, '\(\S*\).*', '\1', '')
+  let name = substitute(a:cmd, '\(\S\-*\).*', '\1', '')
   if !exists("s:have_" . name)
     let e = executable(name)
     if e < 0
