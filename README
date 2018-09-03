@@ -1,3 +1,5 @@
+Based on (changed from jad to procyon):
+
 This is a mirror of http://www.vim.org/scripts/script.php?script_id=446
 
 When you edit a .class file using vim, this plugin will decompile the class file for you and display it in the current buffer.
